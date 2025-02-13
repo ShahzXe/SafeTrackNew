@@ -1,0 +1,179 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header (Simple example) */
+header {
+  background: #000;
+  color: #fff;
+  padding: 20px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #f04e30;
+}
+
+/* Projects Section */
+.projects {
+  padding: 60px 20px;
+}
+.projects .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-group {
+  margin-bottom: 50px;
+}
+.project-group h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: black;
+  border-bottom: 2px solid #2ec4b6;
+  padding-bottom: 10px;
+}
+.region h3 {
+  font-size: 2rem;
+  margin: 20px 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.region .region-flag {
+  width: 40px;
+  height: auto;
+}
+
+/* Accordion Styles */
+.accordion {
+  border-left: 4px solid #2ec4b6;
+  margin: 20px 0;
+}
+.accordion-item {
+  overflow: hidden;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+.accordion-item:hover {
+  background: #e6f7ff;
+}
+.accordion-header {
+  width: 100%;
+  background: #fff;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.accordion-header:hover {
+  background: #f9f9f9;
+}
+.accordion-header.active {
+  background: #f9f9f9;
+}
+
+/* Structured Header: Left and Right Parts */
+.accordion-header .header-left,
+.accordion-header .header-right {
+  display: flex;
+  align-items: center;
+}
+.accordion-header .header-left {
+  gap: 10px;
+  flex: 1;
+}
+.accordion-header .header-right {
+  gap: 15px;
+  min-width: 220px; /* Ensure consistent width for location/year */
+  justify-content: flex-end;
+}
+.accordion-header .proj-number {
+  font-weight: bold;
+  color: #2ec4b6;
+  min-width: 30px;
+}
+.accordion-header .proj-name {
+  font-weight: 600;
+  color: #333;
+}
+.accordion-header .proj-location,
+.accordion-header .proj-year,
+.accordion-header .proj-client {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Accordion Content */
+.accordion-content {
+  background: #fff;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+  padding: 0 20px;
+}
+.accordion-content p {
+  padding: 15px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Hover effect on accordion items */
+.accordion-item:hover .accordion-header {
+  background: #f2f2f2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  .accordion-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .accordion-header .header-right {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+}
+

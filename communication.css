@@ -1,0 +1,131 @@
+/* Ensure content isn’t hidden by a fixed header (adjust as needed) */
+body {
+  padding-top: 100px; /* Adjust this to match your header's height */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Main Container */
+.comm-services-main {
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.comm-hero {
+  position: relative;
+  height: 50vh;
+  background: url('images/comm-hero.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.comm-hero .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.comm-hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+.comm-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.comm-hero p {
+  font-size: 1.5rem;
+}
+
+/* Services Section */
+.services-section {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+}
+.services-section .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Service Card Base Styles */
+.service-item {
+  background: white;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+.service-item:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Image Container */
+.card-image {
+  width: 100%;
+  height: 150px; /* Fixed height for images */
+  overflow: hidden;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.service-item:hover .card-image img {
+  transform: scale(1.1);
+}
+
+/* Card Content */
+.card-content {
+  padding: 20px;
+}
+.card-content h3 {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+/* Big Card Specific Styling */
+.big-card {
+  grid-column: span 3; /* Spans three columns on wider screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* FadeInUp Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .comm-hero h1 {
+    font-size: 2.5rem;
+  }
+  .comm-hero p {
+    font-size: 1.2rem;
+  }
+  .big-card {
+    grid-column: span 1;
+  }
+}
+

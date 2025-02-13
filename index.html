@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SafeTrack</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <!-- Animate.css for entrance animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <style>
+    /* ==================== Base & Page Background ==================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      min-height: 100%;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ==================== Dynamic Navbar ==================== */
+    nav.navbar {
+      background-color: transparent !important;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1050;
+    }
+    nav.navbar .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      transition: color 0.3s ease;
+    }
+    nav.navbar .navbar-brand img {
+      max-height: 80px;
+      margin-right: 10px;
+    }
+    nav.navbar .nav-link {
+      font-size: 1.1rem;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      color: white;
+    }
+    nav.navbar .nav-link:hover { transform: scale(1.05); }
+    nav.navbar.scrolled {
+      background-color: white !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav.navbar.scrolled .nav-link,
+    nav.navbar.scrolled .navbar-brand { color: #333 !important; }
+    nav.navbar.scrolled .nav-link.active { color: white !important; }
+    .dropdown-menu {
+      background-color: white;
+      border: none;
+    }
+    .dropdown-menu .dropdown-item {
+      color: #333;
+      transition: background 0.3s ease;
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background: rgba(46,196,182,0.1);
+    }
+    body { padding-top: 80px; }
+
+
+    /* ==================== Hero Section with Automatic Slider ==================== */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: -80px; /* Shift upward so the image starts at the very top */
+    }
+    .hero-carousel .carousel-item {
+      height: 100vh;
+      position: relative;
+    }
+    .hero-carousel .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    /* Move caption to left side */
+    .carousel-caption {
+      position: absolute;
+      top: 60%;
+      left: 5%;
+      right: auto;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+    .carousel-caption h2 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .carousel-caption .btn {
+      background: #2ec4b6;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .carousel-caption .btn:hover { background: #26aba1; }
+
+    /* Four Thin Progress Indicators with Labels */
+    .progress-indicators {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+    .progress-indicator-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      max-width: 100px;
+    }
+    .progress-indicator {
+      width: 100%;
+      height: 2px;
+      background: #ddd;
+      margin-bottom: 5px;
+      transition: background 0.3s;
+    }
+    .progress-indicator.active {
+      background: #2ec4b6;
+    }
+    .progress-label {
+      font-size: 0.8rem;
+      color: white;
+    }
+    
+    /* ==================== Responsive Adjustments ==================== */
+    @media (max-width: 576px) {
+      .hero-section h1 { font-size: 2.5rem; }
+      .contact-container, .features-grid, .plans-grid, .why-choose-grid { grid-template-columns: 1fr; }
+      .digital-timeline { padding: 20px 0; }
+      .timeline-item { width: 100%; padding: 20px 30px; text-align: center; }
+      .timeline-item::after { left: 50%; transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== Navbar ==================== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        SAFETRACK
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav ms-auto">
+           <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html" >Home</a></li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <li><a class="dropdown-item" href="electrical_service.html">Electrical Installation & Maintenance</a></li>
+                <li><a class="dropdown-item" href="civil.html">Civil Construction</a></li>
+                <li><a class="dropdown-item" href="mechanical.html">Mechanical Works</a></li>
+                <li><a class="dropdown-item" href="communication.html">Communication & Automation/IT Solutions</a></li>
+                <li><a class="dropdown-item" href="testing.html">Testing & Commissioning</a></li>
+                <li><a class="dropdown-item" href="manpower.html">Manpower Supply</a></li>
+             </ul>
+           </li>
+           <li class="nav-item"><a class="nav-link" href="tools.html">Tools & Equipments</a></li>
+           <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- ==================== Hero Section with Slider & Progress Indicators ==================== -->
+  <section class="hero-section">
+    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="2000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/hero1.jpg" class="d-block w-100" alt="Hero Slide 1">
+          <div class="carousel-caption">
+            <h2>Innovative Designs</h2>
+            <a href="#" class="btn btn-primary">Explore Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/hero2.jpg" class="d-block w-100" alt="Hero Slide 2">
+          <div class="carousel-caption">
+            <h2>Seamless Integration</h2>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/hero3.jpg" class="d-block w-100" alt="Hero Slide 3">
+          <div class="carousel-caption">
+            <h2>Creative Solutions</h2>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Four Separated Thin Progress Indicators with Labels -->
+    <div class="progress-indicators">
+      <div class="progress-indicator-container">
+        <div class="progress-indicator"></div>
+        <span class="progress-label">Design</span>
+      </div>
+      <div class="progress-indicator-container">
+        <div class="progress-indicator"></div>
+        <span class="progress-label">Integration</span>
+      </div>
+      <div class="progress-indicator-container">
+        <div class="progress-indicator"></div>
+        <span class="progress-label">Solutions</span>
+      </div>
+      <div class="progress-indicator-container">
+        <div class="progress-indicator"></div>
+        <span class="progress-label">Launch</span>
+      </div>
+    </div>
+  </section>
+  <!-- Main Content Sections -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <div class="content-wrapper">
+                <h2>About SafeTrack</h2>
+                <p>SafeTrack is a trusted contracting company in Saudi Arabia, delivering high-quality Electrical, Civil, and Mechanical solutions. Established in 2008, SafeTrack has built a strong reputation for reliability and excellence in the construction industry, successfully executing projects across various sectors.</p>
+                <p><br />Headquartered in Saudi Arabia, SafeTrack takes pride in managing a diverse portfolio of projects with a strong commitment to quality, safety, and efficiency. Our skilled team of professionals ensures that every project is completed on time while maintaining the highest industry standards.</p>
+                <p><br />In addition to our contracting services, SafeTrack is dedicated to providing innovative technical solutions and continuous customer support. We invest in cutting-edge technology and experienced personnel to meet the evolving needs of our clients.</p>
+                <p><br />At SafeTrack, we prioritize long-term relationships with our clients, employees, and suppliers. Our mission is to contribute to Saudi Arabia’s infrastructure growth and uphold our commitment to excellence in every project we undertake.</p>
+                <ul class="about-list"></ul>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+       <!-- Services Section -->
+<section id="services" class="services section-padding">
+    <div class="content-wrapper">
+        <div class="service-container">
+            <article class="service-item" data-service="electrical">
+                <h3>Joint Venture Partnership</h3>
+                <p>Safe Track teams up with K&B’s Electric for a powerful partnership</p>
+            </article>
+            <article class="service-item" data-service="civil">
+                <h3>Organizational Structure</h3>
+                <p>Building Success through Strong Organizational Structure</p>
+            </article>
+            <!-- In the services section grid -->
+            <article class="service-item" data-service="business-profile">
+               <h3>Business Profile</h3>
+               <p>View our company's credentials and capabilities</p>
+            </article>
+          </div>
+
+        <!-- Service Details Container -->
+        <div id="electrical-details" class="service-content">
+         <div class="service-detail-content">
+         <div class="text-content">
+            <h3>Strategic Partnership: Safe Track and K&B’s Electric Unite</h3>
+            <ul>
+                <p>Safe Track is proud to announce a strategic joint venture with K&B’s Electric a company that has been a leader in the Pakistan market since its establishment in 2006. K&B’s Electric is renowned for its exceptional services across Civil Construction , Electrical Installation & Maintenance and IT Solutions, and has built a solid reputation for delivering high-quality projects on time, with unmatched precision and professionalism.
+This collaboration combines Safe Track’s expertise in safety and security solutions with K&B’s Electric  extensive experience and trusted presence in the Pakistani market. Together, we aim to deliver innovative, reliable, and comprehensive engineering solutions to clients in both Pakistan and Saudi Arabia.</p>
+            </ul>
+        </div>
+        <img src="images/kbs_logo.jpg" alt="K&B's Electric Logo" class="service-image">
+        </div>
+       </div>
+
+            <div id="civil-details" class="service-content">
+              <div class="service-detail-content">
+              <div class="text-content">
+               <h3>Building Success through Strong Organizational Structure</h3>
+                <ul>
+                  <p>The organizational structure of SAFE TRACK COMPANY LIMITED is meticulously designed to ensure seamless management and operational efficiency. At the helm are the esteemed Board Members, followed by the General Manager who oversees distinct departments such as Business Development, Accounting & Finance, Project Operations, Administration, and Procurement. Each department is led by dedicated managers, fostering a collaborative environment that enhances productivity and innovation. This structured approach underscores SAFE TRACK's commitment to delivering high-quality projects on time, adhering to stringent safety standards, and ensuring unparalleled customer satisfaction.</p>
+                </ul>
+             </div>
+             <img src="images/structure.png" alt="Structure" class="structure-image">
+             </div>
+            </div>
+
+            <div id="business-profile-details" class="service-content">
+             <div class="service-detail-content">
+             <div class="text-content">
+               <h3>Business Profile</h3>
+               <p>
+                 <a href="https://drive.google.com/file/d/1H7T0CslcIDH74pV8nWK9hyrnpFGzmne6/view?usp=drive_link" style="color: #2ec4b6;">
+    Click here
+</a>
+
+                 to view the latest edition of our Business Profile
+               </p>
+              </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add this after the services section but before contact section -->
+<section class="clients-section section-padding">
+    <div class="content-wrapper">
+        <h2 class="section-heading">SOME OF OUR CLIENTS</h2>
+        <div class="section-line"></div>
+        <div class="clients-logos">
+            <a href="https://gcc.luluhypermarket.com/en-ae/" target="_blank" rel="noopener noreferrer">
+              <img src="images/LULU.png" alt="Client 1 Company" class="client-logo">
+            </a>
+            <a href="https://www.cepco-sa.com/" target="_blank" rel="noopener noreferrer">
+              <img src="images/CEPCO.png" alt="Client 1 Company" class="client-logo">
+            </a>
+            <a href="https://www.albassamgroups.com/gulf.html" target="_blank" rel="noopener noreferrer">
+              <img src="images/GHI.png" alt="Client 1 Company" class="client-logo">
+            </a>
+            <a href="https://www.al-osais.com/index.php" target="_blank" rel="noopener noreferrer">
+              <img src="images/OSAIS.png" alt="Client 1 Company" class="client-logo">
+            </a>
+            <a href="https://www.alfanar.com/" target="_blank" rel="noopener noreferrer">
+              <img src="images/ALFANAR.png" alt="Client 1 Company" class="client-logo">
+            </a>
+        </div>
+    </div>
+</section>
+    </main>
+  <!-- Footer -->
+    <footer class="footer">
+    <div class="content-wrapper footer-columns">
+        <!-- About Us Column -->
+        <div class="footer-col">
+            <h4>About Us</h4>
+            <p>SafeTrack is a premier contracting company in Saudi Arabia, delivering excellence in electrical, civil, and mechanical engineering since 2008.</p>
+        </div>
+
+        <!-- Services Column -->
+        <div class="footer-col">
+            <h4>Our Services</h4>
+            <ul class="footer-services">
+                <li><a href="electrical_service.html#electrical">Electrical Installation & Maintenance</a></li>
+                 <li><a href="civil.html">Civil Construction</a></li>
+                 <li><a href="mechanical.html">Mechanical Works</a></li>
+                 <li><a href="Communication.html">Communication & Automation/IT Solutions</a></li>
+                 <li><a href="testing.html">Testing & Commissioning</a></li>
+                 <li><a href="manpower.html">Manpower Supply</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>17/18TH CROSS, KING ABDUL AZIZ ROAD,
+P. O. BOX 2156 AL‐KHOBAR 31952, KSA</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+966 13 8677845</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span> info@safetrackco.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Keep the existing footer structure but add this CSS -->
+
+<style>
+/* Updated Footer Styles */
+.footer-col {
+    text-align: left;
+    position: relative;
+    padding: 0 40px;
+}
+
+.footer-col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-services {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-services li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+}
+
+.footer-services li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #2ec4b6;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.footer-services li:hover::before {
+    transform: translateX(5px);
+}
+
+.footer-services a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.footer-services a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .footer-col {
+        padding: 20px 0;
+        text-align: center;
+    }
+    
+    .footer-col:not(:last-child)::after {
+        display: none;
+    }
+    
+    .footer-col:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-services li {
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .footer-services li::before {
+        display: none;
+    }
+}
+</style>
+    <!-- Copyright Section -->
+    <div class="copyright">
+    <p>© 2025 SafeTrack. All Rights Reserved. Made by <span class="developer-credit"><a href="http://cybercrafters.it.com/" target="_blank" rel="noopener">CyberCrafters</a></span></p>
+    <div class="social-links">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</div>
+</footer>
+  
+  <!-- ==================== JavaScript ==================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle Free Quote Form Panel
+    function toggleQuoteForm() {
+      var panel = document.getElementById("quoteFormPanel");
+      panel.classList.toggle("open");
+    }
+    
+    // Dynamic Navbar background change on scroll
+    window.addEventListener('scroll', function() {
+      var navbar = document.querySelector('nav.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Update Progress Indicators on Carousel slide
+    var heroCarousel = document.getElementById('heroCarousel');
+    var progressContainers = document.querySelectorAll('.progress-indicator-container');
+    
+    // Initialize first indicator as active
+    progressContainers.forEach(function(container, index) {
+      if (index === 0) container.querySelector('.progress-indicator').classList.add('active');
+    });
+    
+    heroCarousel.addEventListener('slide.bs.carousel', function(e) {
+      var slideIndex = e.to; // 0-based index
+      progressContainers.forEach(function(container, index) {
+        container.querySelector('.progress-indicator').classList.toggle('active', index === slideIndex);
+      });
+    });
+  </script>
+</body>
+</html>

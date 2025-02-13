@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | SafeTrack</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <!-- Animate.css for entrance animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="projects.css">
+  
+  <style>
+    /* ==================== Base & Page Background ==================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      min-height: 100%;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ==================== Dynamic Navbar ==================== */
+    nav.navbar {
+      background-color: transparent !important;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1050;
+    }
+    nav.navbar .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      transition: color 0.3s ease;
+    }
+    nav.navbar .navbar-brand img {
+      max-height: 80px;
+      margin-right: 10px;
+    }
+    nav.navbar .nav-link {
+      font-size: 1.1rem;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      color: white;
+    }
+    nav.navbar .nav-link:hover { transform: scale(1.05); }
+    nav.navbar.scrolled {
+      background-color: white !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav.navbar.scrolled .nav-link,
+    nav.navbar.scrolled .navbar-brand { color: #333 !important; }
+    nav.navbar.scrolled .nav-link.active { color: white !important; }
+    .dropdown-menu {
+      background-color: white;
+      border: none;
+    }
+    .dropdown-menu .dropdown-item {
+      color: #333;
+      transition: background 0.3s ease;
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background: rgba(46,196,182,0.1);
+    }
+    body { padding-top: 80px; }
+
+
+    /* ==================== Hero Section with Automatic Slider ==================== */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: -80px; /* Shift upward so the image starts at the very top */
+    }
+    .hero-carousel .carousel-item {
+      height: 100vh;
+      position: relative;
+    }
+    .hero-carousel .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    /* Move caption to left side */
+    .carousel-caption {
+      position: absolute;
+      top: 60%;
+      left: 5%;
+      right: auto;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+    .carousel-caption h2 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .carousel-caption .btn {
+      background: #2ec4b6;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .carousel-caption .btn:hover { background: #26aba1; }
+
+    
+    /* ==================== Responsive Adjustments ==================== */
+    @media (max-width: 576px) {
+      .hero-section h1 { font-size: 2.5rem; }
+      .contact-container, .features-grid, .plans-grid, .why-choose-grid { grid-template-columns: 1fr; }
+      .digital-timeline { padding: 20px 0; }
+      .timeline-item { width: 100%; padding: 20px 30px; text-align: center; }
+      .timeline-item::after { left: 50%; transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== Navbar ==================== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        SAFETRACK
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav ms-auto">
+           <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <li><a class="dropdown-item" href="electrical_service.html">Electrical Installation & Maintenance</a></li>
+                <li><a class="dropdown-item" href="civil.html">Civil Construction</a></li>
+                <li><a class="dropdown-item" href="mechanical.html">Mechanical Works</a></li>
+                <li><a class="dropdown-item" href="communication.html">Communication & Automation/IT Solutions</a></li>
+                <li><a class="dropdown-item" href="testing.html">Testing & Commissioning</a></li>
+                <li><a class="dropdown-item" href="manpower.html">Manpower Supply</a></li>
+             </ul>
+           </li>
+           <li class="nav-item"><a class="nav-link" href="tools.html">Tools & Equipments</a></li>
+           <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- ==================== Hero Section with Slider & Progress Indicators ==================== -->
+  <section class="hero-section">
+    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="2000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/projects_hero.jpg" class="d-block w-100" alt="Hero Slide 1">
+          <div class="carousel-caption">
+            <h2>Our Projects</h2>
+            <a class="btn btn-primary">Excellence in Engineering & Construction</a>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+  <!-- Projects Section -->
+  <section class="projects">
+    <div class="container">
+
+      <!-- On-going Projects Group -->
+      <div class="project-group">
+        <h2>On-going Projects</h2>
+        <div class="accordion">
+
+           <!-- Accordion Item for On-going Project 01 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">01</span>
+                <span class="proj-name">CEPCO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Ras Al-Khair</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Relay & Control Panels installation, LV & Control Cable laying glanding & termination. Assisting to testing and comissioning Engineers.Protection scheme modification at live 380 kv RIC-2 Substation
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 02 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">02</span>
+                <span class="proj-name">CEPCO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Ras Al-Khair</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Relay & Control Panels installation, LV & Control Cable laying glanding & termination.Assisting to testing and comissioning Engineers. Protection scheme modification at new 115KV Tuwaiq Substation
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 03 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">03</span>
+                <span class="proj-name">CEPCO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Jubail</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Relay & Control Panels installation, LV & Control Cable laying glanding & termination.Assisting to testing and comissioning Engineers. Protection scheme modification at live 230KV Jubail Sub-1 Substation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 04 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">04</span>
+                <span class="proj-name">CEPCO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Jubail</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Relay & Control Panels installation, LV & Control Cable laying glanding & termination.Assisting to testing and comissioning Engineers. Protection scheme modification at new 230KV AGIC Substation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 05 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">05</span>
+                <span class="proj-name">CEPCO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Ras-Al Khair</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Excavation and backfilling with thermal sand, Installation of CBD, sub base of trench for underground cable laying 115 KV from RIC-2 to Tuwaiq Substation.
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 06 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">06</span>
+                <span class="proj-name">AL BABTAIN CONTRACTING CO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Riyadh</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Excavation and backfilling with thermal sand, Installation of CBD, sub base of trench for underground cable laying for Malqa Substation (5KM)
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 07 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">07</span>
+                <span class="proj-name">AL BABTAIN CONTRACTING CO/SEC</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Riyadh</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                High Voltage 1200mm<sup>2</sup> Underground Cable laying for Malqa Substation (5KM)
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 08 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">08</span>
+                <span class="proj-name">EAST PIPES INTEGRATED CO.</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Dammam</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Civil and earth work at 2nd Industrial area.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 09 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">09</span>
+                <span class="proj-name">MISCELLANEOUS PROJECTS</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Dammam &amp; Jubail</span>
+                <span class="proj-year">2023‐</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Maintenance &amp; renovation of office building, mosque, earth work grading &amp; leveling, road construction backfilling, compaction of layered base course, and asphalting paving works.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item for On-going Project 10 -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <div class="header-left">
+                <span class="proj-number">10</span>
+                <span class="proj-name">GLOBE MARINE SERVICES</span>
+              </div>
+              <div class="header-right">
+                <span class="proj-location">Jubail</span>
+                <span class="proj-year">2024-</span>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Earth and Asphalt work at Abu Haydriya
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Completed Projects Group -->
+      <div class="project-group">
+        <h2>Completed Projects</h2>
+
+        <!-- Region: In KSA with Flag Icon -->
+        <div class="region">
+          <h3>
+            <img src="images/ksa-flag.png" alt="KSA Flag" class="region-flag">
+            In KSA
+          </h3>
+          <div class="accordion">
+            <!-- Accordion Item for Project 01 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">01</span>
+                  <span class="proj-name">MISCELLANEOUS PROJECTS</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2008‐13</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Construction of office building and environmental exhaust hale, fencing work to container terminal, road construction of earth work, backfilling, compaction of layered base course, and asphalting paving at trucking terminal with M.E.P works.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 02 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">02</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Jubail</span>
+                  <span class="proj-year">2008</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Construction of new office building and new foundation for crane at Hadeed Finish Product Area.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 03 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">03</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2008-09</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Building construction of labor accommodation at 2nd Industrial Area.</p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 04 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">04</span>
+                  <span class="proj-name">TECNO MASTERS</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Al-Khobar</span>
+                  <span class="proj-year">2009</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Building construction of head office for Tecno Masters</p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 05 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">05</span>
+                  <span class="proj-name">AL-KHODARI</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Abqaiq</span>
+                  <span class="proj-year">2010</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Landfill area Abqaiq Dammam Municipality project environmental work (Gas exhaust work).
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 06 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">06</span>
+                  <span class="proj-name">AL‐BENALI</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2010</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Construction of office building and work shop.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 07 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">07</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam Port</span>
+                  <span class="proj-year">2012-13</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Road construction milling and Asphalt paving
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 08 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">08</span>
+                  <span class="proj-name">Dammam Municipality</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam 91</span>
+                  <span class="proj-year">2012-13</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Road construction backfilling and dumping the materials to out side.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 09 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">09</span>
+                  <span class="proj-name">AL‐KHODARI</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Abqaiq</span>
+                  <span class="proj-year">2014-15</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Landfill area Abqaiq Dammam Municipality project environmental work (Gas exhaust work).
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 10 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">10</span>
+                  <span class="proj-name">AL‐KHODARI</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam 91</span>
+                  <span class="proj-year">2014-15</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Landfill area Abqaiq Dammam Municipality project environmental work.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 11 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">11</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Yanbu</span>
+                  <span class="proj-year">2015</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Building construction of labor accommodation and Asphalt paving.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 12 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">12</span>
+                  <span class="proj-name">KHODARI HEAVY INDUSTRIES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">3rd Industrial</span>
+                  <span class="proj-year">2015</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                Surface preparation leveling and backfilling at 3rd Industrial area
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 13 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">13</span>
+                  <span class="proj-name">AL‐BABTAIN CONTRACTING CO</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Touqba</span>
+                  <span class="proj-year">2016</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Asphalt cutting and removing, Trench excavation, Sand filling, Sub base & Base course lying and Asphalting
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 14 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">14</span>
+                  <span class="proj-name">SENDAB CO</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam Port</span>
+                  <span class="proj-year">2016</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Road construction of Earth and Asphalt paving work at warehouse site
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 15 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">15</span>
+                  <span class="proj-name">AL‐MANARATAIN</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2016</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Installation and testing of Electrical work at 2nd Industrial area
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 16 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">16</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2016</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Civil and Electrical work (6 Floor Building)
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 17 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">17</span>
+                  <span class="proj-name">WESTCON CONTRACTING EST</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2016</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Earth and Asphalt work at AET project 2nd Industrial area
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 18 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">18</span>
+                  <span class="proj-name">MISCELLANEOUS PROJECTS</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Salasil</span>
+                  <span class="proj-year">2017</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Excavation and leveling area for pound, Installation of HDPE geomembrane liner. Dammam Riyadh Road
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 19 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">19</span>
+                  <span class="proj-name">AL‐BABTAIN CONTRACTING CO</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Jubail</span>
+                  <span class="proj-year">2017</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Excavation, Backfilling and Asphalt work in SEC sub station Jubail 2 Industrial area.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 20 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">20</span>
+                  <span class="proj-name">EASTERN MUNICIPALITY</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2018</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Backfilling the are with sand and maral at Landfill Area Dammam
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 21 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">21</span>
+                  <span class="proj-name">KING ABDULAZIZ DAMMAM PORT, MAWANI</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2019</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Road and Inter lock tiles work at Dammam port housing project
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 22 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">22</span>
+                  <span class="proj-name">EASTERN MUNICIPALITY</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2019</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Backfilling the are with sand and maral at Landfill Area Dammam Phase‐2
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 23 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">23</span>
+                  <span class="proj-name">Al‐YAMAMA CO</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2019</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Backfilling and leveling area with thermal sand and maral
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 24 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">24</span>
+                  <span class="proj-name">ESTEDAMA, ENVIRONMENTAL SOLUTION EST.</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2019</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Excavation of waste evaporation pound, civil and asphalting work
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 25 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">25</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2019</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Construction of car parking and Labor accommodation and Asphalt works.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 26 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">26</span>
+                  <span class="proj-name">Al‐HASA MUNICIPALITY</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Al-Hasa</span>
+                  <span class="proj-year">2019</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                Backfill the are with sand and maral at landfill Hasa Phase‐1
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 27 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">27</span>
+                  <span class="proj-name">BABTAIN CONTRACTING CO.</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Al‐Kharj</span>
+                  <span class="proj-year">2020-21</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Excavation and backfilling with thermal sand and sub base of trench for underground cable laying 132 KV as per SEC standards at Al‐Tawdihiya‐2
+                </p>
+              </div>
+            </div>
+
+
+            <!-- Accordion Item for Project 28 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">28</span>
+                  <span class="proj-name">BABTAIN CONTRACTING CO.</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Al‐Khafji</span>
+                  <span class="proj-year">2021-22</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Excavation and backfilling with thermal sand and sub base of trench for underground cable laying as per SEC standards.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 29 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">29</span>
+                  <span class="proj-name">MISCELLANEOUS PROJECTS</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam & Jubail</span>
+                  <span class="proj-year">2022-24</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Maintenance & Renovation of office building, Mosque, Earth work grading & leveling, Road construction backfilling, compaction of layered base course and Asphalting paving works.
+                </p>
+              </div>
+            </div>
+
+
+            <!-- Accordion Item for Project 30 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">30</span>
+                  <span class="proj-name">RB HILTON SAUDI ARABIA LTD.</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Jubail</span>
+                  <span class="proj-year">2023</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Construction of new Mosque in Royal Commission Jubail area
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 31 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">31</span>
+                  <span class="proj-name">EAST PIPES INTEGRATED CO.</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam</span>
+                  <span class="proj-year">2023</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Civil and Earth Work at 2nd Industrial area
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Project 32 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">32</span>
+                  <span class="proj-name">GLOBE MARINE SERVICES</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Dammam Port</span>
+                  <span class="proj-year">2024</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                 Earth work (Grading & Leveling) area for park of 300cars inside port
+                </p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Region: In Pakistan with Flag Icon -->
+        <div class="region">
+          <h3>
+            <img src="images/pak-flag.png" alt="Pakistan Flag" class="region-flag">
+            In Pakistan
+          </h3>
+          <div class="accordion">
+            <!-- Accordion Item for Pakistan Project 1 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">1</span>
+                  <span class="proj-name">Creative Electronics</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2015-16</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Erection of HT, LT structure poles and construction of foundation for HT, LT structure poles.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Accordion Item for Pakistan Project 2 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">2</span>
+                  <span class="proj-name">Creative Electronics</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2015-16</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Installation of Energy Meters and Dressing of Services 
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 3 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">3</span>
+                  <span class="proj-name">Rajput Builder & Developer's</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2014-15</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Supply and installation of MDBS
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 4 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">4</span>
+                  <span class="proj-name">Rajput Builder & Developer's</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2014-15</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                 Supply and installation of various type of cables, switches and cable tray
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 5 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">5</span>
+                  <span class="proj-name">Power Solution</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2012-15</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Installation of Gen set and  Protection, Distribution Panels
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 6 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">6</span>
+                  <span class="proj-name">TEVTA</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2016-17</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Maintenance & Overhauling  of Generator
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 7 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">7</span>
+                  <span class="proj-name">TEVTA</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2017-18</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  General Maintenance  of Generator
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 8 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">8</span>
+                  <span class="proj-name">Jinnah Hospital</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Maintenance & Overhauling  of Generator
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 9 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">9</span>
+                  <span class="proj-name">Jinnah Hospital</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Maintenance & Overhauling  of Generator
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 10 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">10</span>
+                  <span class="proj-name">Institute of public health</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Installation of Panels along with Power Cable network 
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 11 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">11</span>
+                  <span class="proj-name">Rescue 1122</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">All over Pakistan</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Prequalified  General Maintenance contractor 
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 12 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">12</span>
+                  <span class="proj-name">Lahore College</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Supply of Electrical Items 
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 13 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">13</span>
+                  <span class="proj-name">UVAS</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Supply of power cable and other accessories
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 14 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">14</span>
+                  <span class="proj-name">NADRA</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">All over Pakistan</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Prequalified Electrical Contractor
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 15 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">15</span>
+                  <span class="proj-name">Fabricator</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">All over Pakistan</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Various Projects ( CCTV , Lights etc.)
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 16 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">16</span>
+                  <span class="proj-name">E-Solution</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">All over Pakistan</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Various Projects (Generator maintenance etc.)
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 17 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">17</span>
+                  <span class="proj-name">M/S Saif Engineer</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2018-19</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Providing/Laying of Soiling and drainage scheme 
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 18 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">18</span>
+                  <span class="proj-name">M/S Saif Engineer</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2019-20</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Construction of Boundary Wall of Grave yard 
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 19 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">19</span>
+                  <span class="proj-name">M/S Saif Engineer</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2019-20</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Rural Drainage Scheme
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 20 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">20</span>
+                  <span class="proj-name">M/S Saif Engineer</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2019-20</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Renovation of Building
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 21 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">21</span>
+                  <span class="proj-name">Shalimar Hospital </span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Lahore</span>
+                  <span class="proj-year">2021</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Prequalified Contractor  
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Item for Pakistan Project 22 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <div class="header-left">
+                  <span class="proj-number">22</span>
+                  <span class="proj-name">Al-Khidmat</span>
+                </div>
+                <div class="header-right">
+                  <span class="proj-location">Al over Pakistan</span>
+                  <span class="proj-year">2021</span>
+                </div>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Prequalified Contractor
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript for Accordion Behavior -->
+  <script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        // Toggle active class for current header
+        this.classList.toggle('active');
+        // Get associated content
+        const content = this.nextElementSibling;
+        if(content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          // Close any other open accordions within the same container (optional)
+          const siblings = this.parentElement.parentElement.querySelectorAll('.accordion-content');
+          siblings.forEach(sib => sib.style.maxHeight = null);
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+
+
+     <!-- Footer -->
+    <footer class="footer">
+    <div class="content-wrapper footer-columns">
+        <!-- About Us Column -->
+        <div class="footer-col">
+            <h4>About Us</h4>
+            <p>SafeTrack is a premier contracting company in Saudi Arabia, delivering excellence in electrical, civil, and mechanical engineering since 2008.</p>
+        </div>
+
+        <!-- Services Column -->
+        <div class="footer-col">
+            <h4>Our Services</h4>
+            <ul class="footer-services">
+                <li><a href="electrical_service.html#electrical">Electrical Installation & Maintenance</a></li>
+                 <li><a href="civil.html">Civil Construction</a></li>
+                 <li><a href="mechanical.html">Mechanical Works</a></li>
+                 <li><a href="Communication.html">Communication & Automation/IT Solutions</a></li>
+                 <li><a href="testing.html">Testing & Commissioning</a></li>
+                 <li><a href="manpower.html">Manpower Supply</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>17/18TH CROSS, KING ABDUL AZIZ ROAD,
+P. O. BOX 2156 AL‐KHOBAR 31952, KSA</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+966 13 8677845</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span> info@safetrackco.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Keep the existing footer structure but add this CSS -->
+
+<style>
+/* Updated Footer Styles */
+.footer-col {
+    text-align: left;
+    position: relative;
+    padding: 0 40px;
+}
+
+.footer-col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-services {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-services li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+}
+
+.footer-services li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #2ec4b6;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.footer-services li:hover::before {
+    transform: translateX(5px);
+}
+
+.footer-services a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.footer-services a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .footer-col {
+        padding: 20px 0;
+        text-align: center;
+    }
+    
+    .footer-col:not(:last-child)::after {
+        display: none;
+    }
+    
+    .footer-col:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-services li {
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .footer-services li::before {
+        display: none;
+    }
+}
+</style>
+    <!-- Copyright Section -->
+    <div class="copyright">
+    <p>© 2025 SafeTrack. All Rights Reserved. Made by <span class="developer-credit"><a href="http://cybercrafters.it.com/" target="_blank" rel="noopener">CyberCrafters</a></span></p>
+    <div class="social-links">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</div>
+</footer>
+  
+  <!-- ==================== JavaScript ==================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle Free Quote Form Panel
+    function toggleQuoteForm() {
+      var panel = document.getElementById("quoteFormPanel");
+      panel.classList.toggle("open");
+    }
+    
+    // Dynamic Navbar background change on scroll
+    window.addEventListener('scroll', function() {
+      var navbar = document.querySelector('nav.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Update Progress Indicators on Carousel slide
+    var heroCarousel = document.getElementById('heroCarousel');
+    var progressContainers = document.querySelectorAll('.progress-indicator-container');
+    
+    // Initialize first indicator as active
+    progressContainers.forEach(function(container, index) {
+      if (index === 0) container.querySelector('.progress-indicator').classList.add('active');
+    });
+    
+    heroCarousel.addEventListener('slide.bs.carousel', function(e) {
+      var slideIndex = e.to; // 0-based index
+      progressContainers.forEach(function(container, index) {
+        container.querySelector('.progress-indicator').classList.toggle('active', index === slideIndex);
+      });
+    });
+  </script>
+</body>
+</html>

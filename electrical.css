@@ -1,0 +1,255 @@
+/* ========== Base Styles ========== */
+.electrical-page {
+    --electrical-primary: #f04e30;
+    --electrical-dark: #2a2a2a;
+    --electrical-light: #f9f9f9;
+}
+
+.electrical-main {
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+/* ========== Hero Section ========== */
+.electrical-hero {
+    background: linear-gradient(135deg, 
+        rgba(40,40,40,0.9) 0%,
+        rgba(30,30,30,0.9) 100%),
+        url('images/electrical-bg.jpg') center/cover;
+    padding: 8rem 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.electrical-hero-title {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.05em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.electrical-hero-subtitle {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.4rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ========== Services Grid ========== */
+.electrical-services {
+    padding: 4rem 0;
+    background: var(--electrical-light);
+}
+
+.electrical-services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.electrical-service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.electrical-service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(240,78,48,0.1) 50%,
+        transparent 100%);
+    transform: rotate(30deg);
+    transition: 0.5s;
+}
+
+.electrical-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.electrical-service-card:hover::before {
+    animation: electricFlow 1.5s linear infinite;
+}
+
+@keyframes electricFlow {
+    0% { transform: rotate(30deg) translateX(-50%); }
+    100% { transform: rotate(30deg) translateX(50%); }
+}
+
+/* Card Elements */
+.service-card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--electrical-primary);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.electrical-service-card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.service-card-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.service-card-list li {
+    padding: 0.8rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.service-card-list li::before {
+    content: "•";
+    color: var(--electrical-primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.service-card-cta {
+    display: inline-block;
+    color: var(--electrical-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.service-card-cta:hover {
+    color: var(--electrical-dark);
+    transform: translateX(5px);
+}
+
+/* ========== Certification Banner ========== */
+.certification-banner {
+    background: black;
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+}
+
+.certification-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.certification-content i {
+    font-size: 2.5rem;
+    color: var(--electrical-primary);
+}
+
+.certification-content h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 768px) {
+    .electrical-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .electrical-hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .electrical-services-container {
+        grid-template-columns: 1fr;
+    }
+
+    .certification-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .electrical-hero-title {
+        font-size: 2rem;
+    }
+
+    .electrical-service-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Card + Image Combo Layout */
+.card-image-combo {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.service-combo-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    height: 73%;
+}
+
+.service-combo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-combo-image:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-image-combo {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-combo-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-overlay {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
